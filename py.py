@@ -3,12 +3,14 @@ import pandas as pd
 from sqlalchemy import create_engine, text
 from datetime import date, datetime
 import os
+from dotenv import load_dotenv
+load_dotenv()
+DATABASE_URL = os.getenv("DATABASE_URL")
+CSV_FILE_PATH = os.getenv("CSV_FILE_PATH")
 
 def main():
     try:
         # --- Configuration ---
-        CSV_FILE_PATH = 'F:/Khalid/ITI/00-Freelance and projects/Projects/Python/Sample - Superstore.csv'
-        DATABASE_URL = 'postgresql+psycopg2://postgres:XILSxtaZsFJHqysaWsiaqrtHKzwPIXDT@trolley.proxy.rlwy.net:19456/railway'
         engine = create_engine(DATABASE_URL)
 
         PROCESS_NAME = 'daily_etl_job'
